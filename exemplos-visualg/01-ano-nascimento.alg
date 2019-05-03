@@ -1,4 +1,4 @@
-algoritmo "PrimeiroExemplo"
+algoritmo "PrimeiroExemploTeste"
 // Função : Saida e entrada de dados
 // Autor : Eu
 // Data : 03/04/2019

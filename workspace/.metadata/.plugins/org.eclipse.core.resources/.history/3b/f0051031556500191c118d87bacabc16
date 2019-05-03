@@ -1,0 +1,21 @@
+
+public class Conta {
+
+	public int numero;
+	public String nome;
+	private double saldo;
+	
+	public double getSaldo(){
+		return this.saldo;
+	}
+	
+	public boolean depositar(double valor){
+		saldo += valor;
+		return true;
+	}
+	
+	public boolean sacar(double valor){
+		saldo -= valor;
+		return true;
+	}
+}

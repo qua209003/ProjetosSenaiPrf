@@ -1,0 +1,55 @@
+import javax.swing.JOptionPane;
+
+
+public class GerenciarContaJO {
+
+	public static void main(String[] args) {
+
+		Conta conta01 = new Conta();
+		conta01.numero = 301;		
+		conta01.nome = "Luiz Felipe";
+
+		
+		Object[] opcoes = {"Depositar",
+				"Sacar",
+				"Saldo",
+				"Extrato"};
+		
+		int opcao = JOptionPane.showOptionDialog(null, 
+				"Escolha uma opção", 
+				"Oparações Bancarias", 
+				JOptionPane.DEFAULT_OPTION, 
+				JOptionPane.INFORMATION_MESSAGE, 
+				null, 
+				opcoes, 
+				opcoes[0]);
+		
+		if(opcao == 0){
+			conta01.depositar(
+					Double.parseDouble(
+					JOptionPane.showInputDialog("Digite o valor")));
+			
+		}
+		
+		if(opcao == 1){
+		String txValor = JOptionPane.showInputDialog("Digite o valor");
+		double valor = Double.parseDouble(txValor);
+		boolean sucesso = conta01.sacar(valor);
+		if(sucesso){
+			System.out.println("Saque realizado com sucesso");
+		}else{
+			System.out.println("Saldo insuficiente!");
+		}			
+		}
+		
+		
+		
+		System.out.println(
+				"Nome: "+ conta01.nome+
+				"\nSaldo: "+ conta01.getSaldo()+
+				"\nExtrato: "+ conta01.getExtrato()	
+				);
+
+	}
+
+}

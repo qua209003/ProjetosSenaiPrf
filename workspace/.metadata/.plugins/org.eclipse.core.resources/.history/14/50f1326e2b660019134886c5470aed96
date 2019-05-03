@@ -1,0 +1,73 @@
+public class Conta {
+
+	public int numero;
+	public String nome;
+	private double saldo;
+	private String extrato = "";
+
+	public double getSaldo() {
+		return this.saldo;
+	}
+	
+	public String getExtrato(){
+		return extrato;
+	}
+
+	public boolean depositar(double valor) {
+		extrato += "\nC + " + valor;
+		saldo += valor;
+		return true;
+	}
+
+	public boolean sacar(double valor) {
+
+		if (valor > saldo) {
+			return false;
+		}
+		extrato += "\nD - " + valor;
+		saldo -= valor;
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((extrato == null) ? 0 : extrato.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + numero;
+		long temp;
+		temp = Double.doubleToLongBits(saldo);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Conta other = (Conta) obj;
+		if (extrato == null) {
+			if (other.extrato != null)
+				return false;
+		} else if (!extrato.equals(other.extrato))
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (numero != other.numero)
+			return false;
+		if (Double.doubleToLongBits(saldo) != Double
+				.doubleToLongBits(other.saldo))
+			return false;
+		return true;
+	}
+	
+	
+}

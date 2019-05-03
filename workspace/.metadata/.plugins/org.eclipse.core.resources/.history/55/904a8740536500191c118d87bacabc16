@@ -1,0 +1,20 @@
+
+public class GerenciarConta {
+
+	public static void main(String[] args) {
+
+		Conta conta01 = new Conta();
+		conta01.numero = 301;
+//		conta01.saldo = 10;
+		conta01.depositar(2000);
+		
+		conta01.nome = "Luiz Felipe";
+		
+		System.out.println(
+				"Nome: "+ conta01.nome+
+				"\nSaldo: "+ conta01.saldo				
+				);
+
+	}
+
+}

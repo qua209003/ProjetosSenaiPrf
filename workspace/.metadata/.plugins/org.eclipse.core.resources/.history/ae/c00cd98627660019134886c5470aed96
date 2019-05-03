@@ -1,0 +1,14 @@
+
+public class ExemploReferencia {
+
+	public static void main(String[] args) {
+		
+		int n1 = 0;
+		int n2 = n1;
+		n1 = 60;
+		System.out.println(n1);
+		System.out.println(n2);
+
+	}
+
+}

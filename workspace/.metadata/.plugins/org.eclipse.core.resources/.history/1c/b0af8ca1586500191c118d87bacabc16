@@ -1,0 +1,27 @@
+public class Conta {
+
+	public int numero;
+	public String nome;
+	private double saldo;
+	private String extrato;
+
+	public double getSaldo() {
+		return this.saldo;
+	}
+
+	public boolean depositar(double valor) {
+		extrato += "C + " + valor;
+		saldo += valor;
+		return true;
+	}
+
+	public boolean sacar(double valor) {
+
+		if (valor > saldo) {
+			return false;
+		}
+		extrato += "D - " + valor;
+		saldo -= valor;
+		return true;
+	}
+}

@@ -1,0 +1,12 @@
+{
+  "C:\\Program Files (x86)\\Java\\jre1.8.0_201\\lib\\rt.jar": {
+    "location": "C:\\Program Files (x86)\\Java\\jre1.8.0_201\\lib\\rt.jar",
+    "status": "UNRESOLVED",
+    "error": "Could not transfer artifact jre:jre:zip:call:1.0.0 from/to remote-models (http://download.eclipse.org/recommenders/models/kepler/): Error transferring file, server returned status code 307"
+  },
+  "C:\\Users\\luiz.felipe\\workspace\\ExemploBanco\\src": {
+    "location": "C:\\Users\\luiz.felipe\\workspace\\ExemploBanco\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\luiz.felipe\\workspace\\ExemploBanco\\src\u0027. Skipped."
+  }
+}

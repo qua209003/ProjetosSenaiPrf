@@ -1,0 +1,62 @@
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+
+public class GerenciarContaJO {
+
+	public static void main(String[] args) {
+		UIManager.put(
+				"Button.defaultButtonFollowsFocus", Boolean.TRUE);
+		Conta conta01 = new Conta();
+		conta01.numero = 301;
+//		conta01.nome = "Luiz Felipe";
+		
+		// vamos incluir na conta o cliente 
+
+		Object[] opcoes = { "Depositar", "Sacar", "Saldo", "Extrato" };
+
+		// colocar um laço de repetição
+		int opcao = 0;
+		while (opcao != -1) {
+
+			opcao = JOptionPane.showOptionDialog(null, "Escolha uma opção",
+					"Oparações Bancarias", JOptionPane.DEFAULT_OPTION,
+					JOptionPane.INFORMATION_MESSAGE, null, opcoes, opcoes[2]);
+			try {
+				if (opcao == 0) {
+					conta01.depositar(Double.parseDouble(JOptionPane
+							.showInputDialog("Digite o valor")
+							.replace(",", ".")));
+				}
+
+				if (opcao == 1) {
+					String txValor = JOptionPane.showInputDialog(
+							"Digite o valor").replace(",", ".");
+					double valor = Double.parseDouble(txValor);
+					boolean sucesso = conta01.sacar(valor);
+					if (sucesso) {
+						JOptionPane.showMessageDialog(null,
+								"Saque realizado com sucesso");
+					} else {
+						JOptionPane.showMessageDialog(null,
+								"Saldo insuficiente!");
+					}
+				}
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(null, "Caractere inválido");
+			}
+
+			if (opcao == 2) {
+				JOptionPane.showMessageDialog(null,
+						"Saldo: " + conta01.getSaldo());
+			}
+
+			if (opcao == 3) {
+				JOptionPane.showMessageDialog(null,
+						"Extrato: " + conta01.getExtrato());
+			}
+
+		}
+
+	}
+
+}

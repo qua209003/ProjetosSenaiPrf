@@ -1,0 +1,43 @@
+import java.text.SimpleDateFormat;
+
+import javax.swing.JOptionPane;
+
+
+public class GerenciarPessoa {
+
+	public static void main(String[] args) {
+			
+		String nome = 
+				JOptionPane.showInputDialog(
+						"Digite o nome do Cliente");
+		String renda = 
+				JOptionPane.showInputDialog(
+						"Digite a renda");
+		
+		Cliente cliente = new Cliente(nome,
+				Double.parseDouble(renda));
+		
+		
+		
+		String dtN = JOptionPane.showInputDialog(null, 
+				"Digite a Data de Nascimento");
+		
+		SimpleDateFormat sdf = new SimpleDateFormat(
+				"dd/MM/yyy");
+		
+		
+		
+		cliente.setDtNascimento(sdf.parse(dtN));
+		
+//		cliente.setSexo("Masculino");
+		cliente.setTelefone("950106070");
+		cliente.setCpf("03020105960");
+		
+		System.out.println(cliente.getNome());
+		
+		GerenciarContaJO gerenciar = new GerenciarContaJO();
+		gerenciar.usarConta(cliente);
+
+	}
+
+}

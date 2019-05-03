@@ -1,0 +1,12 @@
+
+public class ExemploReferencia {
+
+	public static void main(String[] args) {
+		
+		int n1 = 0;
+		
+		System.out.println(n1);
+
+	}
+
+}

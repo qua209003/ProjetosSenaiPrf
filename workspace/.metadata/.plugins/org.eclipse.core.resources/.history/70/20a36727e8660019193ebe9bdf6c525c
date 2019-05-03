@@ -1,0 +1,11 @@
+
+public class GerenciarPessoa {
+
+	public static void main(String[] args) {
+		Pessoa expPesso = new Pessoa();
+		
+		Cliente expCliente = new Cliente();
+
+	}
+
+}

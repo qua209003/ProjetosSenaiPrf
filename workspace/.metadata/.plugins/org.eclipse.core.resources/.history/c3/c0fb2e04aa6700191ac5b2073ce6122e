@@ -1,0 +1,19 @@
+
+public class GerenciarPessoa {
+
+	public static void main(String[] args) {
+				
+		Cliente cliente = new Cliente("Luiz Felipe",1100);
+		cliente.setIdade(31);
+		cliente.setSexo("Masculino");
+		cliente.setTelefone("950106070");
+		cliente.setCpf("03020105960");
+		
+		System.out.println(cliente.getNome());
+		
+		GerenciarContaJO gerenciar = new GerenciarContaJO();
+		gerenciar.usarConta(cliente);
+
+	}
+
+}
