@@ -6,7 +6,10 @@ import javax.swing.JOptionPane;
 
 public class GerenciarPessoa {
 
-	public static void main(String[] args) throws ParseException {
+	public Cliente cadastrarCliente() throws ParseException {
+// encapsulamento 
+// tipo de retorno (qual quer tipo de variavel ou classe)
+// nome do metodo(lista de argumentos)
 			
 		String nome = 
 				JOptionPane.showInputDialog(
@@ -44,11 +47,7 @@ public class GerenciarPessoa {
 		
 		System.out.println(cliente.getNome());
 		
-		GerenciarContaJO gerenciar = new GerenciarContaJO();
-		gerenciar.usarConta(cliente);
-
-	
-	
+		return cliente;
 	
 	}
 

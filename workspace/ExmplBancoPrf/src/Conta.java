@@ -37,5 +37,12 @@ public class Conta {
 		saldo -= valor;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return numero + ";" + saldo + ";"+ extrato + ";";
+	}
+	
+	
 	
 }

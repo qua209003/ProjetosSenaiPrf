@@ -1,20 +1,36 @@
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Random;
 
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 public class GerenciarContaJO {
+	
+	public Conta cadastrarConta(){
+		GerenciarPessoa futuroCliente = new GerenciarPessoa();
+		// vamos incluir na conta o cliente
+		Conta conta01 = null;
+		try {
+			conta01 = new Conta(futuroCliente.cadastrarCliente());
+			Random rand = new Random();
+			conta01.numero = rand.nextInt(90000)+10000;
+			
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return conta01;
+	}
+	
 
-	public void usarConta(Cliente cliente) {
+	public void usarConta(Conta conta01) {
 		UIManager.put(
 				"Button.defaultButtonFollowsFocus", Boolean.TRUE);
-		// vamos incluir na conta o cliente
-		Conta conta01 = new Conta(cliente);
-		conta01.numero = 301;
+
 		
 		JOptionPane.showMessageDialog(null, 
 				"Bem vindo sr. "+
-						cliente.getNome());
+						conta01.getCliente().getNome());
 		
 		Object[] opcoes = { "Depositar", "Sacar", "Saldo", "Extrato", "Dados" };
 
@@ -65,7 +81,7 @@ public class GerenciarContaJO {
 						"Dados do Cliente" + 
 				"\nNome: "+conta01.getCliente().getNome()+
 				"\nData Nascimento: "+
-					sdf.format(cliente.getDtNascimento())+
+					sdf.format(conta01.getCliente().getDtNascimento())+
 				"\nSexo: "+conta01.getCliente().getSexo()+
 				"\nFone: "+conta01.getCliente().getTelefone()
 				);

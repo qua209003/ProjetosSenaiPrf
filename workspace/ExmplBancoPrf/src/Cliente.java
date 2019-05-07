@@ -27,5 +27,15 @@ public class Cliente extends Pessoa {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+
+	@Override
+	public String toString() {
+		return renda + ";" 
+				+ telefone+ ";" 
+				+ getDtNascimento() + ";"
+				+ getNome() + ";" 
+				+ getCpf() + ";"
+				+ getSexo() + ";";
+	}
 	
 }
