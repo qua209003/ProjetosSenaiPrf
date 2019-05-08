@@ -1,3 +1,5 @@
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,6 +15,7 @@ public class GerenciarBanco {
 		GerenciarContaJO gerenciar = new GerenciarContaJO();
 		Object escolha = "";
 		List<Conta> lsConta = new ArrayList<Conta>();
+		
 		do {
 			Object[] opcBanco = { "Nova Conta", 
 					"Gerenciar Contas", 
@@ -50,6 +53,17 @@ public class GerenciarBanco {
 		} catch (IOException e) {
 			System.out.println("Arquivo não Encontrado");
 		}
+	}
+	
+	private static List<Conta> buscarContas(){
+		
+		try {
+			FileReader arquivo = new FileReader("C:\\Users\\luiz.felipe\\git\\ProjetosSenaiPrf\\workspace\\ExmplBancoPrf\\src\\lsConta.txt");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 
 }
