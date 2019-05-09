@@ -34,7 +34,6 @@ public class GerenciarContaJO {
 		return conta01;
 	}
 	
-
 	public void usarConta(Conta conta01) {
 		UIManager.put(
 				"Button.defaultButtonFollowsFocus", Boolean.TRUE);
