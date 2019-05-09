@@ -1,11 +1,23 @@
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.Random;
 
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 public class GerenciarContaJO {
+	
+	public Conta buscarConta(List<Conta> lsConta,String numero){
+		int num = Integer.parseInt(numero);
+		for (Conta conta : lsConta) {
+			if(conta.numero == num){
+				return conta;
+			}
+		}
+		
+		return null;
+	}
 	
 	public Conta cadastrarConta(){
 		GerenciarPessoa futuroCliente = new GerenciarPessoa();

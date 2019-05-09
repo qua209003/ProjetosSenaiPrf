@@ -6,6 +6,12 @@ public class Conta {
 	private double saldo;
 	private String extrato = "";
 	
+	Conta (int numero, double saldo, Cliente cliente){
+		this.numero = numero;
+		this.saldo = saldo;
+		this.cliente = cliente;
+	}
+	
 	Conta (Cliente cliente){
 		this.cliente = cliente;
 	}
@@ -40,7 +46,7 @@ public class Conta {
 
 	@Override
 	public String toString() {
-		return numero + ";" + saldo + ";"+ extrato + ";";
+		return numero + ";" + saldo + ";"+ extrato.replace("\n", "<br>") + ";";
 	}
 	
 	
