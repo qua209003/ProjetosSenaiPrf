@@ -34,7 +34,7 @@ public class GerenciarContaJO {
 		return conta01;
 	}
 	
-	public void usarConta(Conta conta01) {
+	public void usarConta(Conta conta01, List<Conta> lsConta) {
 		UIManager.put(
 				"Button.defaultButtonFollowsFocus", Boolean.TRUE);
 
@@ -43,7 +43,7 @@ public class GerenciarContaJO {
 				"Bem vindo sr. "+
 						conta01.getCliente().getNome());
 		
-		Object[] opcoes = { "Depositar", "Sacar", "Saldo", "Extrato", "Dados" };
+		Object[] opcoes = { "Depositar", "Sacar", "Saldo", "Extrato", "Dados" , "Transferir"};
 
 		// colocar um laço de repetição
 		int opcao = 0;
@@ -96,7 +96,28 @@ public class GerenciarContaJO {
 				"\nSexo: "+conta01.getCliente().getSexo()+
 				"\nFone: "+conta01.getCliente().getTelefone()
 				);
-			}			
+			}	
+			
+			if (opcao == 5){
+				// aqui vai tranferir
+				String nConta = JOptionPane.showInputDialog(
+						"Digite o número da conta:");
+				double valor = Double.parseDouble(
+						JOptionPane.showInputDialog(
+						"Digite o número da conta:"));
+				Conta contaNova = buscarConta(lsConta, nConta);
+				// aqui é uma forma de evitar um
+				// nullpointerexception
+				if(contaNova!=null){
+					if(conta01.sacar(valor)){
+						contaNova.depositar(valor);
+					}
+				}else{
+					JOptionPane.showMessageDialog(null, 
+							"Conta não encontrada");
+				}
+				 
+			}
 
 		}
 

@@ -46,7 +46,7 @@ public class GerenciarBanco {
 					JOptionPane.showMessageDialog(null, 
 							"Número invalido de conta");
 				}else{
-					gerenciar.usarConta(usar);
+					gerenciar.usarConta(usar,lsConta);
 				}
 			}
 		} while (!escolha.equals("Concluir"));

@@ -15,13 +15,13 @@ public class GerarValidarCpf {
 			int mult = cpf[i] * aux;
 			// vai somando os valores multiplicados
 			soma = soma + mult;
-			System.out.println("pos " + i + " val " + cpf[i] + " mult " + aux
-					+ " = " + mult + " vlr soma " + soma);
+//			System.out.println("pos " + i + " val " + cpf[i] + " mult " + aux
+//					+ " = " + mult + " vlr soma " + soma);
 			aux--;
 		}
 		// resto da divisão por 11
 		int rest = soma % 11;
-		System.out.println(rest);
+//		System.out.println(rest);
 
 		if (rest < 2) {
 			return 0;
@@ -41,9 +41,9 @@ public class GerarValidarCpf {
 		}
 
 		cpf[9] = buscaDig(0, cpf);
-		System.out.println(cpf[9]);
+//		System.out.println(cpf[9]);
 		cpf[10] = buscaDig(1, cpf);
-		System.out.println(cpf[10]);
+//		System.out.println(cpf[10]);
 
 		String txCpf = "";
 		// mostrar o cpf completo
