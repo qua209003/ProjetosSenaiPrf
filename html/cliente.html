@@ -4,29 +4,74 @@
 	<title>Cadastrar Cliente</title>
 	<meta charset="utf-8" />
 	</head>
-	<body>
+	<body style="background-color: #F0F8FF;">
+	<center>
+	<img src="img\imgNuBank.jpg"
+	alt="Logo do banco"
+	height="50" width="50" />
 	<h3 style="color: blue;">Dados do Cliente</h3>
 	<a href="conta.html">Acessar Conta</a>
-		
+	<!-- tarefa, fazer a mesma formatação-->
 	<h4>Cadastrar Cliente</h4>
-	<form name="formulario">
-	Nome
-	<input type="text" name="nome" />
-	<br>Data de Nascimento
-	<input type="text" name="dtNascimento" />
-	<br>CPF
-	<input type="text" name="cpf" />
-	<br>
-	Sexo
-	<br>
-	Masculino<input type="radio" name="sexo" value="M" />
-	Feminino<input type="radio" name="sexo" value="F" />
-	<br>Renda
-	<input type="text" name="renda" />
-	<br>Telefone
-	<input type="text" name="telefone" />		
-	<br><input type="submit" value="Confirmar" />
-	</form>
 	
+	<form name="formulario">
+	<table border="0">
+		<tr>
+			<td>Nome</td>
+			<td><input type="text" name="nome" />
+			</td>
+		</tr>
+		<tr>
+			<td>Data de Nascimento</td>
+			<td>
+			<input type="date" name="dtNascimento" />
+			</td>
+		</tr>
+		<tr>
+			<td>CPF</td>
+			<td>
+			<input 
+			maxlength="11"
+			type="number" 
+			name="cpf" />
+			</td>
+		</tr>
+		<tr>
+			<td>Sexo</td>
+			<td>
+				Masculino<input type="radio" name="sexo" value="M" />
+				Feminino<input type="radio" name="sexo" value="F" />
+			</td>
+		</tr>
+		<tr>
+			<td>Renda</td>
+			<td>
+			<input type="number" name="renda" />
+			</td>
+		</tr>
+		<tr>
+			<td>Telefone</td>
+			<td>
+			<input type="number" name="telefone" />		
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>
+			<input type="submit" value="Confirmar" />
+			</td>
+		</tr>
+	</table>
+	</form>
+	<br>
+	<a 
+	target="_blank"
+	href="http://www.google.com.br/search?q=senai">
+	<img
+	src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+	height="20"
+	width="50"/>
+	</a>
+	</center>
 	</body>
 </html>	
