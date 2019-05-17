@@ -5,3 +5,12 @@ background-color: #F0F8FF;
 h3{
 color: orange;	
 }
+
+h3:active{
+	background-color: #8b05be;
+}
+
+tr:hover{
+	background-color: #8b05be;	
+	color: #ffffff;
+}	
