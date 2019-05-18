@@ -5,6 +5,38 @@
 	<meta charset="utf-8" />
 	<link rel="stylesheet" 
 	type="text/css" href="estilo.css">
+	
+	<script>
+	
+		
+		function validarCliente(){
+		
+		var vNome = document.getElementById('nome').value;
+		var dataNasc = document.formulario.dtNascimento.value;
+		var cpf = document.formulario.cpf.value;
+		var sexo = document.formulario.sexo.value;
+		var renda = document.formulario.renda.value;
+		var telefone = document.formulario.telefone.value;
+		var msg = "";
+		/* nome - ter no minimo 3 caracteres */
+		var erro = false;
+		if(vNome.length < 3){// tem erro
+			erro = true;
+			msg += "Digite mais de 3 caracteres!";
+		}
+		/* idade - ter mais de 18 ou completar neste ano */
+		var anoAtual = new Date().getFullYear();
+		var anoNascimento = new Date(dataNasc).getFullYear();
+		alert(anoNascimento);
+		if(anoAtual-anoNascimento < 18 || isNaN(anoNascimento)){
+			erro = true;
+			msg += "Tem que ter 18 anos!";
+		}
+		document.getElementById('mensagem').innerHTML = msg;
+		
+		return false;
+		}
+	</script>	
 	</head>
 	<body>
 	<center>
@@ -15,12 +47,12 @@
 	<a href="conta.html">Acessar Conta</a>
 	<!-- tarefa, fazer a mesma formatação-->
 	<h4>Cadastrar Cliente</h4>
-	
-	<form name="formulario">
+	<div id="mensagem"></div>
+	<form name="formulario" onsubmit="return validarCliente();">
 	<table border="0">
 		<tr>
 			<td>Nome</td>
-			<td><input type="text" name="nome" />
+			<td><input id="nome" value="" type="text" name="nome"  />
 			</td>
 		</tr>
 		<tr>
