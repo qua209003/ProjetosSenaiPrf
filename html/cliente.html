@@ -22,17 +22,41 @@
 		var erro = false;
 		if(vNome.length < 3){// tem erro
 			erro = true;
-			msg += "Digite mais de 3 caracteres!";
+			msg += "Digite mais de 3 caracteres para o nome!<br>";
 		}
 		/* idade - ter mais de 18 ou completar neste ano */
 		var anoAtual = new Date().getFullYear();
 		var anoNascimento = new Date(dataNasc).getFullYear();
-		alert(anoNascimento);
+		//alert(anoNascimento);
 		if(anoAtual-anoNascimento < 18 || isNaN(anoNascimento)){
 			erro = true;
-			msg += "Tem que ter 18 anos!";
+			msg += "Tem que ter 18 anos!<br>";
 		}
+		
+		if(cpf.length < 11){// erro menor que 11 digitos
+			erro = true;
+			msg += "Digite 11 digitos para o cpf!<br>";
+		}
+		
+		if(sexo.length < 1){// erro sexo não marcado
+			erro = true;
+			msg += "Marque uma opção de sexo!<br>";
+		}
+
+		if(renda < 2){
+			erro = true;
+			msg += "Sua renda é muito ruim!<br>";
+		}
+		
 		document.getElementById('mensagem').innerHTML = msg;
+		
+		if(erro){
+			alert('O dados não serão gravados');
+			return false;
+		}else{
+			alert('Form ok os dados serão gravados');
+			return true;
+		}
 		
 		return false;
 		}
@@ -66,7 +90,7 @@
 			<td>
 			<input 
 			maxlength="11"
-			type="number" 
+			type="text" 
 			name="cpf" />
 			</td>
 		</tr>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+body{
+font-family: Arial, Helvetica, sans-serif;
+}	
+td{
+background-color: gray;
+margin: auto;
+font-family: Arial, Helvetica, sans-serif;
+text-align: center;
+}
+td:hover{
+background-color: #f1f1f1;
+margin: auto;
+}
+</style>
+</head>
+<body>
+<center>
+<a href="campoMinado.html">Novo Jogo</a>
+<hr>
+<script>
+
+function mudarCor(obj)
+{
+
+	if(obj.style.background == '' || obj.style.background == 'gray'){
+		obj.style.background = 'blue';
+		return '';
+	}
+	
+	if(obj.style.background == 'blue'){
+		obj.style.background = 'gray';
+		return '';
+	}
+	
+}
+
+function desabilitar(){	
+	return false;
+}
+
+document.oncontextmenu=desabilitar;
+
+var blc = 0;
+var i = 0;
+var j = 0;
+var tb = [];
+var jogando = true;
+var tabela = "<table border=0>";
+for (i = 1; i <= 10; i++) {
+  tb[i] = [];
+  tabela += "<tr>";
+  for (j = 1; j <= 10; j++) { 
+  	blc++;
+  	//tb[i][j] = 1;
+    tabela += "<td id='cel-"+i+"-"+j+"' " 
+    +"style='width:20px; height:20px;'"
+	+" oncontextmenu='mudarCor(this)' "
+    +" onclick=\"clique("+i+","+j+")\">"
+    +" <strong id='sp-"+i+"-"+j+"'></strong></td>";
+  }
+  tabela += "</tr>";
+}
+tabela += "</table>";
+document.write(tabela);
+var x = 0;
+var quantidadeBombas = 3;
+for (x = 1; x <= quantidadeBombas; x++) {
+//alert(x);
+i = Math.floor(Math.random() * 10)+1; 
+j = Math.floor(Math.random() * 10)+1;
+document.getElementById('sp-'+i+'-'+j).innerHTML = '';
+if(tb[i][j] == -1){
+//alert(0);
+x--;
+blc++;
+}
+tb[i][j] = -1;
+blc--;
+}
+
+function clique(i,j){
+if(jogando){
+  if(tb[i][j] == -1){
+  	//alert("bomba");
+    
+    document.getElementById('resultado').innerHTML = "Perdeu";
+    jogando = false;
+    for (i = 1; i <= 10; i++) {
+      for (j = 1; j <= 10; j++) { 
+      if(tb[i][j] == -1)
+		document.getElementById('cel-'+i+'-'+j).style.background = 'red';
+
+      }}
+    
+  }else
+  if(typeof tb[i][j] != "undefined"){
+
+  }else{
+  	//alert(i+" "+j);
+    document.getElementById('cel-'+i+'-'+j).style.background = '#c1c1c1';
+    var qtb = 0;
+    if(typeof tb[i][j] === "undefined"){
+    	qtb = qtBombas(i,j,0);
+    	tb[i][j] = qtb;
+        blc--;
+        document.getElementById('resultado').innerHTML = blc;
+        if(blc==0){
+        document.getElementById('resultado').innerHTML = "É Campeão";
+        jogando = false;
+    	}
+        
+        switch(qtb) {
+          case 1:
+            document.getElementById('cel-'+i+'-'+j).style.color = 'blue';
+            break;
+          case 2:
+            document.getElementById('cel-'+i+'-'+j).style.color = 'red';
+            break;
+          case 3:
+            document.getElementById('cel-'+i+'-'+j).style.color = 'green';
+            break;
+          case 4:
+            document.getElementById('cel-'+i+'-'+j).style.color = '#14105e';
+            break;
+          default:
+            document.getElementById('cel-'+i+'-'+j).style.color = '#670916';
+        }
+        
+    }
+    if(qtb>0){
+    	document.getElementById('sp-'+i+'-'+j).innerHTML = qtb;
+    }else{
+    	qtBombas(i,j,1);
+    }
+  }
+  }
+}
+function qtBombas(i,j,clik){
+var qt = 0;
+var xi = 0;
+var xj = 0;
+  for(xi = i-1; xi<= i+1; xi++){
+  	 for(xj = j-1; xj<= j+1; xj++){
+       //alert(xi+' '+xj);
+       try {
+         if(tb[xi][xj] == -1){
+           qt++;
+           //alert("bomba");
+         }
+         // loop de cliques
+         if(typeof tb[xi][xj] == "undefined" &&
+           xi > 0 && xi < 10+1 &&
+           xj > 0 && xj < 10+1 &&
+           clik==1 && 
+           !(xi==i && xj==j)){
+           //alert(xi+" "+xj);
+           //alert(tb[xi][xj]);
+           clique(xi,xj);
+         }
+       }
+      catch(err) {
+        console.log('');
+      }
+  	}
+  }
+  return qt;
+}
+</script>
+<div id='resultado'></div>
+<hr>
+</center>
+</body>
+</html>

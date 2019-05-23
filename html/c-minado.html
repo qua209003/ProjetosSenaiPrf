@@ -1,0 +1,102 @@
+<html>
+<head>
+    <style>
+        td{
+            height: 20px;
+            width: 20px;
+            background-color: gray;
+        }  
+        td:hover{
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+<center>
+<script>
+    // codigo da tabela
+    var tabela = "<table>";
+    var i, j;
+	var tb = [];
+    for(i = 1; i <= 20; i++){ 
+		tb[i] = [];
+        tabela += "<tr>";
+        for(j = 1; j <= 20; j++){		
+        tabela += "<td id='cel-"+i+"-"+j+
+        "'onclick='clique("+i+","+j+")' ></td>";
+        }
+        tabela += "</tr>";
+    }
+    tabela += "</table>";
+    document.write(tabela);
+    
+    // marcar as bombas.
+    for(var b = 1; b <= 20; b++){   
+        i = Math.floor(Math.random() * 20)+1;
+        j = Math.floor(Math.random() * 20)+1;
+        /*document.getElementById(
+		"cel-"+i+"-"+j).style.background = "red";*/
+        tb[i][j] = -1;
+    }
+    
+    function clique(i , j){
+		// teste se acertou alguma bomba
+		if( tb[i][j] == -1){
+			//alert('tem bomba');
+			for(i =1 ; i <= 20; i++){
+				for(j=1; j<=20; j++){
+					if(tb[i][j] == -1){
+					document.getElementById(
+					"cel-"+i+"-"+j).style.background = "red";
+					}
+				}
+			}
+		}		
+		else{
+		var qtBomba = contarBombas(i,j,0);
+		tb[i][j] = qtBomba;
+		if(qtBomba > 0){
+		document.getElementById(
+		"cel-"+i+"-"+j).innerHTML  = qtBomba;
+		} else{
+			contarBombas(i,j,1);
+		}
+		
+		document.getElementById("cel-"+i+
+        "-"+j).style.background = "#c1c1c1";		
+		}
+		
+        
+    }
+    
+    
+	function contarBombas(i,j,clicar){
+		var xi, xj, quantidade;
+		quantidade = 0;
+		for(xi = i-1; xi <= i+1; xi++){
+			for(xj = j-1; xj <= j+1; xj++){
+				try{
+					if(tb[xi][xj] == -1){
+					quantidade++;
+					}
+					//condições para fazer novos cliques
+					if(typeof tb[xi][xj] == "undefined" &&
+					clicar == 1 &&
+					!(xi == i && xj == j) &&
+					xi >= 1 && xi <= 20 &&
+					xj >= 1 && xj <= 20
+					){
+						clique(xi,xj);
+					}
+				}catch(err){
+					console.log('erro array');
+				}
+			}
+		}
+		return quantidade;
+	}
+	
+</script>
+</center>
+</body>
+</html>
