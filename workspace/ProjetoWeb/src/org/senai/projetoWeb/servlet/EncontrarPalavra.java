@@ -22,12 +22,15 @@ public class EncontrarPalavra  extends HttpServlet{
 			HttpServletResponse response
 			)throws ServletException, IOException {
 		
-		int qt = 20;
+		String tamanho = request.getParameter("tamanho");
+		String plvr = request.getParameter("palavra");
+		
+		int qt = Integer.parseInt(tamanho);
 		
 		Random random = new Random(); 
 		int[][] mtz = new int[qt][qt];
 
-		String palavra = "java".toUpperCase();
+		String palavra = plvr.toUpperCase();
 		PrintWriter saida = response.getWriter();
 		// indice da linha  
 		int il = random.nextInt(qt);
