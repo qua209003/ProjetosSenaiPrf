@@ -1,0 +1,12 @@
+
+-- endereço da imagem 
+http://www.df.gov.br/wp-conteudo/uploads/2015/10/Bandeira_do_Distrito_Federal_Brasil.png
+
+-- link para o bootstrap
+<link rel="stylesheet" 
+href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+https://www.w3schools.com/bootstrap4/bootstrap_tables.asp
+
+-- classe da tabela
+class="table table-striped"
+
