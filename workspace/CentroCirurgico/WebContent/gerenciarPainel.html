@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Gerenciar Painel</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+<body>
+	<div class="container">
+		<h2>Gerenciar o Painel dos Pacientes no Centro Cirúrgico</h2>
+		<form action="/action_page.php">
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="nome">Nome Completo:</label> <input type="nome"
+						class="form-control" id="nome" placeholder="Nome do Paciente"
+						name="nome">
+				</div>
+
+				<div class="form-group col-md-3">
+					<label for="status">Status:</label> <select class="form-control">
+						<option value="">Pré-Operatório</option>
+						<option value="">Em sala cirúrgica</option>
+						<option value="">Em recuperação</option>
+						<option value="">Transferido</option>
+					</select>
+				</div>
+
+				<div class="form-group col-md-3">
+					<label for="local">Local:</label> <input type="local"
+						class="form-control" id="local" placeholder="Quarto/Sala"
+						name="local">
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="form-group col-md-3">
+					<label for="local">Início Previsto:</label> <input type="time"
+						class="form-control" id="local" name="local">
+				</div>
+				<div class="form-group col-md-3">
+					<label for="local">Início Cirúrgia:</label> <input type="time"
+						class="form-control" id="local" name="local">
+				</div>
+				<div class="form-group col-md-3">
+					<label for="local">Fim Cirúrgia:</label> <input type="time"
+						class="form-control" id="local" name="local">
+				</div>
+				<div class="form-group col-md-3">
+					<label for="local">Saída Prevista:</label> <input type="time"
+						class="form-control" id="local" name="local">
+				</div>
+			</div>
+			<button type="submit" class="btn btn-secondary">Novo</button>
+			<button type="submit" class="btn btn-primary">Gravar</button>
+			<button type="submit" class="btn btn-danger">Apagar</button>
+		</form>
+	</div>
+
+</body>
+</html>
