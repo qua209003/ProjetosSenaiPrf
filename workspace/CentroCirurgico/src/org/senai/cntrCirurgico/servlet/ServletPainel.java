@@ -9,14 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 //mapear a classe servlet
-@WebServlet(name = "servletPainel", 
-			urlPatterns = "/servletPainel")
+@WebServlet(name = "servletPainel", urlPatterns = "/servletPainel")
 public class ServletPainel extends HttpServlet {
 
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServerException, IOException {
 		// tenho que pegar as informações do formulário
-		String teste = request.getParameter("teste");
-		System.out.println(teste);
+		String nome = request.getParameter("nome");
+		String status = request.getParameter("status");
+		System.out.println("Nome digitado " + nome + " Status " + status);
 
 	}
 
