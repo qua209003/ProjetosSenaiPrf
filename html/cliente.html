@@ -8,57 +8,84 @@
 	
 	<script>
 	
+	function gravar(dados) {
+		
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status == 200) {
+		       document.getElementById("demo").innerHTML = xhttp.responseText;
+		    }
+		};
+		xhttp.open("GET", "servletCliente?"+dados, true);
+		xhttp.send();
+		
+	}
+	
 		
 		function validarCliente(){
 		
+		var dados = "";
+			
 		var vNome = document.getElementById('nome').value;
 		var dataNasc = document.formulario.dtNascimento.value;
 		var cpf = document.formulario.cpf.value;
 		var sexo = document.formulario.sexo.value;
 		var renda = document.formulario.renda.value;
 		var telefone = document.formulario.telefone.value;
-		var msg = "";
-		/* nome - ter no minimo 3 caracteres */
-		var erro = false;
-		if(vNome.length < 3){// tem erro
-			erro = true;
-			msg += "Digite mais de 3 caracteres para o nome!<br>";
-		}
-		/* idade - ter mais de 18 ou completar neste ano */
-		var anoAtual = new Date().getFullYear();
-		var anoNascimento = new Date(dataNasc).getFullYear();
-		//alert(anoNascimento);
-		if(anoAtual-anoNascimento < 18 || isNaN(anoNascimento)){
-			erro = true;
-			msg += "Tem que ter 18 anos!<br>";
-		}
 		
-		if(cpf.length < 11){// erro menor que 11 digitos
-			erro = true;
-			msg += "Digite 11 digitos para o cpf!<br>";
-		}
 		
-		if(sexo.length < 1){// erro sexo não marcado
-			erro = true;
-			msg += "Marque uma opção de sexo!<br>";
-		}
 
-		if(renda < 2){
-			erro = true;
-			msg += "Sua renda é muito ruim!<br>";
-		}
-		
-		document.getElementById('mensagem').innerHTML = msg;
-		
-		if(erro){
-			alert('O dados não serão gravados');
+			dados += "vNome=" + vNome;
+			dados += "dataNasc=" + dataNasc;
+			dados += "cpf=" + cpf;
+			dados += "sexo=" + sexo;
+			dados += "renda=" + renda;
+			dados += "telefone=" + telefone;
+
+			var msg = "";
+			/* nome - ter no minimo 3 caracteres */
+			var erro = false;
+			if (vNome.length < 3) {// tem erro
+				erro = true;
+				msg += "Digite mais de 3 caracteres para o nome!<br>";
+			}
+			/* idade - ter mais de 18 ou completar neste ano */
+			var anoAtual = new Date().getFullYear();
+			var anoNascimento = new Date(dataNasc).getFullYear();
+			//alert(anoNascimento);
+			if (anoAtual - anoNascimento < 18 || isNaN(anoNascimento)) {
+				erro = true;
+				msg += "Tem que ter 18 anos!<br>";
+			}
+
+			if (cpf.length < 11) {// erro menor que 11 digitos
+				erro = true;
+				msg += "Digite 11 digitos para o cpf!<br>";
+			}
+
+			if (sexo.length < 1) {// erro sexo não marcado
+				erro = true;
+				msg += "Marque uma opção de sexo!<br>";
+			}
+
+			if (renda < 2) {
+				erro = true;
+				msg += "Sua renda é muito ruim!<br>";
+			}
+
+			document.getElementById('mensagem').innerHTML = msg;
+
+			if (erro) {
+				alert('O dados não serão gravados');
+				return false;
+			} else {
+				alert('Form ok os dados serão gravados');
+				gravar(dados);
+
+				return true;
+			}
+
 			return false;
-		}else{
-			alert('Form ok os dados serão gravados');
-			return true;
-		}
-		
-		return false;
 		}
 	</script>	
 	</head>
@@ -72,7 +99,7 @@
 	<!-- tarefa, fazer a mesma formatação-->
 	<h4>Cadastrar Cliente</h4>
 	<div id="mensagem"></div>
-	<form name="formulario" onsubmit="return validarCliente();">
+	<form name="formulario" >
 	<table border="0">
 		<tr>
 			<td>Nome</td>
@@ -116,7 +143,7 @@
 		<tr>
 			<td></td>
 			<td>
-			<input type="submit" value="Confirmar" />
+			<input type="submit" value="Confirmar" onclick="return validarCliente();" />
 			</td>
 		</tr>
 	</table>
