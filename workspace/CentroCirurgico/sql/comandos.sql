@@ -19,3 +19,28 @@ saida_prevista varchar(5)
 );
 show tables;
 desc painel;
+
+-- DML (Linguagem de manipulação de dados)
+-- insert - update - delete
+insert into painel(
+	nome_completo  ,
+	status         ,
+	local          ,
+	ini_previsto   ,
+	ini_cirurgia   ,
+	fim_cirurgia   ,
+	saida_prevista )
+values ('Luiz',
+		'transferido',
+		'Quarto 10',
+		'02:03',
+		'04:06',
+		'10:15',
+		'14:10'
+		);
+
+-- consulta no banco de dados
+select * from painel;
+
+
+

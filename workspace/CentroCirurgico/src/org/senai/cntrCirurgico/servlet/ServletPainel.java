@@ -19,8 +19,15 @@ public class ServletPainel extends HttpServlet {
 		String nome = request.getParameter("nome");
 		String status = request.getParameter("status");
 		System.out.println("Nome digitado " + nome + " Status " + status);
-		
+
 		Painel obj = new Painel();
+		obj.setNomeCompleto(nome);
+		obj.setStatus(status);
+		obj.setLocal(request.getParameter("local"));
+		obj.setIniPrevisto(request.getParameter("iniPrev"));
+		obj.setIniCirurgia(request.getParameter("iniCirrg"));
+		obj.setSaidaPrevista(request.getParameter("saiPrev"));		
+		obj.setFimCirurgia(request.getParameter("fimCirrg"));
 		obj.inserir();
 
 	}

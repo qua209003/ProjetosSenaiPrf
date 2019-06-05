@@ -1,6 +1,7 @@
 package org.senai.cntrCirurgico.modelo;
 
-import java.sql.DriverManager;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class Painel {
@@ -79,15 +80,45 @@ public class Painel {
 	}
 
 	public void inserir() {
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			DriverManager.getConnection(
-		"jdbc:mysql://localhost/centro_cirurgico", "root", "");
-			System.out.println("ok ao conectar");
-		} catch (Exception e) {
-			System.out.println("erro de conexão");
-		}
 
+		Connection conexao = new ConectarJDBC().getConectar();
+		
+		if(conexao != null) {
+			String sql = "insert into painel(" + 
+					"	nome_completo  ," + 
+					"	status         ," + 
+					"	local          ," + 
+					"	ini_previsto   ," + 
+					"	ini_cirurgia   ," + 
+					"	fim_cirurgia   ," + 
+					"	saida_prevista )" + 
+					"values (?," + 
+					"		?," + 
+					"		?," + 
+					"		?," + 
+					"		?," + 
+					"		?," + 
+					"		?" + 
+					"		)";
+			try {
+				PreparedStatement prepararSQL =
+						conexao.prepareStatement(sql);
+				prepararSQL.setString(1, nomeCompleto);
+				prepararSQL.setString(2, status);
+				prepararSQL.setString(3, local);
+				prepararSQL.setString(4, iniPrevisto);
+				prepararSQL.setString(5, iniCirurgia);
+				prepararSQL.setString(6, fimCirurgia);
+				prepararSQL.setString(7, saidaPrevista);
+				
+				prepararSQL.execute();
+				prepararSQL.close();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		}
 	}
 
 }
