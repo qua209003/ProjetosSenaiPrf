@@ -26,7 +26,13 @@
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function() {
 			    if (this.readyState == 4 && this.status == 200) {
-			       document.getElementById("demo").innerHTML = xhttp.responseText;
+			       var msg = xhttp.responseText;
+			       document.getElementById("msg").innerHTML = msg;
+			       if(msg == "Gravado com sucesso"){
+			    	   document.getElementById("msg").className = "alert alert-info";
+			       }else{
+			    	   document.getElementById("msg").className = "alert alert-danger";
+			       }
 			    }
 			};
 			xhttp.open("GET", "servletPainel?"+dadosForm(), true);
@@ -39,6 +45,7 @@
 	<div class="container">
 		<h2>Gerenciar o Painel dos Pacientes no Centro Cirúrgico</h2>
 		<form action="/action_page.php">
+		<div id="msg"></div>
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="nome">Nome Completo:</label> 

@@ -1,6 +1,7 @@
 package org.senai.cntrCirurgico.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.rmi.ServerException;
 
 import javax.servlet.annotation.WebServlet;
@@ -28,7 +29,13 @@ public class ServletPainel extends HttpServlet {
 		obj.setIniCirurgia(request.getParameter("iniCirrg"));
 		obj.setSaidaPrevista(request.getParameter("saiPrev"));		
 		obj.setFimCirurgia(request.getParameter("fimCirrg"));
-		obj.inserir();
+		
+		PrintWriter saida = response.getWriter();
+		if(obj.inserir()) {
+			saida.print("Gravado com sucesso");
+		}else {
+			saida.print("Erro ao gravar");
+		}
 
 	}
 

@@ -79,7 +79,7 @@ public class Painel {
 		this.saidaPrevista = saidaPrevista;
 	}
 
-	public void inserir() {
+	public boolean inserir() {
 
 		Connection conexao = new ConectarJDBC().getConectar();
 		
@@ -113,12 +113,14 @@ public class Painel {
 				
 				prepararSQL.execute();
 				prepararSQL.close();
-				
+				return true;
 			} catch (SQLException e) {
 				e.printStackTrace();
+				return false;
 			}
 			
 		}
+		return false;
 	}
 
 }
