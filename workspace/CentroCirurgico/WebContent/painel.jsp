@@ -60,5 +60,10 @@
 			</tr>
 		</tbody>
 	</table>
+	
+	<%
+	Painel p new Painel();
+	out.print("Teste de JSP");
+	%>
 </body>
 </html>

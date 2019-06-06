@@ -2,7 +2,10 @@ package org.senai.cntrCirurgico.modelo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Painel {
 
@@ -121,6 +124,31 @@ public class Painel {
 			
 		}
 		return false;
+	}
+	
+	public List<Painel> getLista(){		
+		try {
+			Connection conexao = new ConectarJDBC().getConectar();
+			PreparedStatement ps = 					
+					conexao.prepareStatement("select * from painel");
+			ResultSet rs = ps.executeQuery();
+			
+			List<Painel> lsPainel = new ArrayList<Painel>();
+			
+			while (rs.next()) {
+				Painel p = new Painel();
+				// o que esta entre aspas "nome_da_coluna_no_banco"
+				p.setCod(rs.getInt("cod"));
+				p.setNomeCompleto(rs.getString("nome_completo"));
+				lsPainel.add(p);
+			}
+			ps.close();
+			conexao.close();
+			return lsPainel;
+		} catch (Exception e) {
+
+		}		
+		return null;
 	}
 
 }
