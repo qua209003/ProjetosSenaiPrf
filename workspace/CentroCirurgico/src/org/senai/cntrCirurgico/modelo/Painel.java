@@ -140,6 +140,12 @@ public class Painel {
 				// o que esta entre aspas "nome_da_coluna_no_banco"
 				p.setCod(rs.getInt("cod"));
 				p.setNomeCompleto(rs.getString("nome_completo"));
+				p.setStatus(rs.getString("status"));
+				p.setLocal(rs.getString("local"));
+				p.setIniPrevisto(rs.getString("ini_previsto"));
+				p.setIniCirurgia(rs.getString("ini_cirurgia"));
+				p.setFimCirurgia(rs.getString("fim_cirurgia"));
+				p.setSaidaPrevista(rs.getString("saida_prevista"));
 				lsPainel.add(p);
 			}
 			ps.close();
@@ -150,5 +156,30 @@ public class Painel {
 		}		
 		return null;
 	}
+	
+	public String getCorStatus() {
+			
+		if(status.equals("Pré-Operatório")) {
+			return "table-warning";
+		}
 
+		if(status.equals("Em sala cirúrgica")) {
+			return "table-danger";
+		}		
+		
+		if(status.equals("Em recuperação")) {
+			return "table-success";
+		}
+
+		if(status.equals("Transferido")) {
+			return "table-primary";
+		}
+		
+		return "";
+	}
+
+	
+	
+	
+	
 }

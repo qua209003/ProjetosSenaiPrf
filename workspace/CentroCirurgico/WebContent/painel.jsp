@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="org.senai.cntrCirurgico.modelo.Painel"%>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -26,9 +27,26 @@
 			</tr>
 		</thead>
 		<tbody>
+
+			<%
+				Painel painel = new Painel();
+
+				for (Painel p : painel.getLista()) {
+					out.print("<tr>");
+					//out.print("<td>" + p.getCod()+"</td>");
+					out.print("<td>" + p.getNomeCompleto() + "</td>");
+					out.print("<td class='"+p.getCorStatus()+"'>" + p.getStatus() + "</td>");
+					out.print("<td>" + p.getIniPrevisto() + "</td>");
+					out.print("<td>" + p.getIniCirurgia() + "</td>");
+					out.print("<td>" + p.getFimCirurgia() + "</td>");
+					out.print("<td>" + p.getSaidaPrevista() + "</td>");
+					out.print("</tr>");
+				}
+			%>
+
 			<tr>
 				<td>John</td>
-				<td class="table-warning" >Pré-Operatório</td>
+				<td class="table-warning">Pré-Operatório</td>
 				<td>HH:MI</td>
 				<td>HH:MI</td>
 				<td>HH:MI</td>
@@ -36,7 +54,7 @@
 			</tr>
 			<tr>
 				<td>Mary</td>
-				<td class="table-danger" >Em sala cirúrgica</td>
+				<td class="table-danger">Em sala cirúrgica</td>
 				<td>HH:MI</td>
 				<td>HH:MI</td>
 				<td>HH:MI</td>
@@ -44,7 +62,7 @@
 			</tr>
 			<tr>
 				<td>July</td>
-				<td class="table-success" >Em recuperação</td>
+				<td class="table-success">Em recuperação</td>
 				<td>HH:MI</td>
 				<td>HH:MI</td>
 				<td>HH:MI</td>
@@ -52,7 +70,7 @@
 			</tr>
 			<tr>
 				<td>Mac</td>
-				<td class="table-primary" >Transferido</td>
+				<td class="table-primary">Transferido</td>
 				<td>HH:MI</td>
 				<td>HH:MI</td>
 				<td>HH:MI</td>
@@ -60,10 +78,7 @@
 			</tr>
 		</tbody>
 	</table>
-	
-	<%
-	Painel p new Painel();
-	out.print("Teste de JSP");
-	%>
+
+
 </body>
 </html>
