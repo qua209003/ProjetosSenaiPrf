@@ -31,7 +31,19 @@ public class ServletPainel extends HttpServlet {
 		obj.setFimCirurgia(request.getParameter("fimCirrg"));
 		
 		PrintWriter saida = response.getWriter();
-		if(obj.inserir()) {
+		
+		int cod = Integer.parseInt(
+				request.getParameter("cod"));
+		
+		boolean sucesso = false;
+		if(cod > 0) {
+			obj.setCod(cod);
+			sucesso = obj.atualizar();
+		}else {
+			sucesso = obj.inserir();
+		}
+		
+		if(sucesso) {
 			saida.print("Gravado com sucesso");
 		}else {
 			saida.print("Erro ao gravar");

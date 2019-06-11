@@ -93,6 +93,47 @@ public class Painel {
 		this.saidaPrevista = saidaPrevista;
 	}
 
+	
+	// copiamos o código inserir pra reaproveitar o codigo e
+	// fazer o método atualizar
+	public boolean atualizar() {
+
+		Connection conexao = new ConectarJDBC().getConectar();
+		
+		if(conexao != null) {
+			String sql = "update painel set " + 
+					"	nome_completo = ? ," + 
+					"	status        = ? ," + 
+					"	local         = ? ," + 
+					"	ini_previsto  = ? ," + 
+					"	ini_cirurgia  = ? ," + 
+					"	fim_cirurgia  = ? ," + 
+					"	saida_prevista = ? " + 
+					" where cod = ? ";
+			try {
+				PreparedStatement prepararSQL =
+						conexao.prepareStatement(sql);
+				prepararSQL.setString(1, nomeCompleto);
+				prepararSQL.setString(2, status);
+				prepararSQL.setString(3, local);
+				prepararSQL.setString(4, iniPrevisto);
+				prepararSQL.setString(5, iniCirurgia);
+				prepararSQL.setString(6, fimCirurgia);
+				prepararSQL.setString(7, saidaPrevista);
+				prepararSQL.setInt(8, cod);
+				
+				prepararSQL.execute();
+				prepararSQL.close();
+				return true;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return false;
+			}
+			
+		}
+		return false;
+	}
+
 	public boolean inserir() {
 
 		Connection conexao = new ConectarJDBC().getConectar();

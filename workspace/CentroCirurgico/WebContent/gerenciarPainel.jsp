@@ -22,6 +22,7 @@
 		dados += "&iniPrev="+document.getElementById("iniPrev").value;
 		dados += "&iniCirrg="+document.getElementById("iniCirrg").value;
 		dados += "&fimCirrg="+document.getElementById("fimCirrg").value;
+		dados += "&cod="+document.getElementById("cod").value;
 		return dados;
 	}
 		function gravar() {
@@ -59,7 +60,11 @@ if(request.getParameter("cod") != null){
 
 	<div class="container">
 		<h2>Gerenciar o Painel dos Pacientes no Centro Cirúrgico</h2>
-		<form action="/action_page.php">
+		<form>
+		<input type="hidden" 
+		value="<% out.print(painel.getCod()); %>"
+		id="cod"
+		 />
 		<div id="msg"></div>
 			<div class="form-row">
 				<div class="form-group col-md-6">
