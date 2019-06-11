@@ -27,10 +27,8 @@
 			</tr>
 		</thead>
 		<tbody>
-
 			<%
 				Painel painel = new Painel();
-
 				for (Painel p : painel.getLista()) {
 					out.print("<tr>");
 					//out.print("<td>" + p.getCod()+"</td>");
@@ -43,39 +41,6 @@
 					out.print("</tr>");
 				}
 			%>
-
-			<tr>
-				<td>John</td>
-				<td class="table-warning">Pré-Operatório</td>
-				<td>HH:MI</td>
-				<td>HH:MI</td>
-				<td>HH:MI</td>
-				<td>HH:MI</td>
-			</tr>
-			<tr>
-				<td>Mary</td>
-				<td class="table-danger">Em sala cirúrgica</td>
-				<td>HH:MI</td>
-				<td>HH:MI</td>
-				<td>HH:MI</td>
-				<td>HH:MI</td>
-			</tr>
-			<tr>
-				<td>July</td>
-				<td class="table-success">Em recuperação</td>
-				<td>HH:MI</td>
-				<td>HH:MI</td>
-				<td>HH:MI</td>
-				<td>HH:MI</td>
-			</tr>
-			<tr>
-				<td>Mac</td>
-				<td class="table-primary">Transferido</td>
-				<td>HH:MI</td>
-				<td>HH:MI</td>
-				<td>HH:MI</td>
-				<td>HH:MI</td>
-			</tr>
 		</tbody>
 	</table>
 

@@ -17,6 +17,17 @@ public class Painel {
 	private String iniCirurgia;
 	private String fimCirurgia;
 	private String saidaPrevista;
+	
+	
+	public Painel(){
+		setNomeCompleto("");
+		setStatus("");
+		setLocal("");
+		setIniPrevisto("");
+		setIniCirurgia("");
+		setFimCirurgia("");
+		setSaidaPrevista("");
+	}
 
 	public int getCod() {
 		return cod;
@@ -151,6 +162,37 @@ public class Painel {
 			ps.close();
 			conexao.close();
 			return lsPainel;
+		} catch (Exception e) {
+
+		}		
+		return null;
+	}
+	
+	
+	public Painel getPainel(int cod){		
+		try {
+			Connection conexao = new ConectarJDBC().getConectar();
+			PreparedStatement ps = 					
+					conexao.prepareStatement(
+							"select * from painel where cod = ? ");
+			ps.setInt(1, cod);
+			ResultSet rs = ps.executeQuery();
+			
+			Painel p = new Painel();
+			while (rs.next()) {
+				// o que esta entre aspas "nome_da_coluna_no_banco"
+				p.setCod(rs.getInt("cod"));
+				p.setNomeCompleto(rs.getString("nome_completo"));
+				p.setStatus(rs.getString("status"));
+				p.setLocal(rs.getString("local"));
+				p.setIniPrevisto(rs.getString("ini_previsto"));
+				p.setIniCirurgia(rs.getString("ini_cirurgia"));
+				p.setFimCirurgia(rs.getString("fim_cirurgia"));
+				p.setSaidaPrevista(rs.getString("saida_prevista"));
+			}
+			ps.close();
+			conexao.close();
+			return p;
 		} catch (Exception e) {
 
 		}		

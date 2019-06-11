@@ -1,3 +1,6 @@
+<%@page import="org.senai.cntrCirurgico.modelo.Painel"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,6 +45,18 @@
 	</script>
 
 
+<%
+// meu java rolar
+Painel painel = new Painel();
+
+if(request.getParameter("cod") != null){
+	int cod = Integer.parseInt(request.getParameter("cod"));
+	painel = painel.getPainel(cod);	
+}
+
+
+%>
+
 	<div class="container">
 		<h2>Gerenciar o Painel dos Pacientes no Centro Cirúrgico</h2>
 		<form action="/action_page.php">
@@ -52,23 +67,30 @@
 					<input type="text"
 						class="form-control" 
 						id="nome" 
+						value="<% out.print(painel.getNomeCompleto()); %>"
 						placeholder="Nome do Paciente"
 						name="nome">
 				</div>
 
 				<div class="form-group col-md-3">
 					<label for="status">Status:</label> 
-					<select class="form-control" id="status" >
+					<select class="form-control" id="status">
 						<option >Pré-Operatório</option>
 						<option >Em sala cirúrgica</option>
 						<option >Em recuperação</option>
 						<option >Transferido</option>
-					</select>
+					</select>	
+					<script>
+					document.getElementById("status").value = 
+						"<% out.print(painel.getStatus()); %>";
+					</script>
 				</div>
 
 				<div class="form-group col-md-3">
 					<label for="local">Local:</label> <input type="text"
-						class="form-control" id="local" placeholder="Quarto/Sala"
+						class="form-control" 
+						value="<% out.print(painel.getLocal()); %>"
+						id="local" placeholder="Quarto/Sala"
 						>
 				</div>
 			</div>
@@ -76,19 +98,27 @@
 			<div class="form-row">
 				<div class="form-group col-md-3">
 					<label for="local">Início Previsto:</label> <input type="time"
-						class="form-control" id="iniPrev" >
+						class="form-control" 
+						value="<% out.print(painel.getIniPrevisto()); %>"
+						id="iniPrev" >
 				</div>
 				<div class="form-group col-md-3">
 					<label for="local">Início Cirúrgia:</label> <input type="time"
-						class="form-control" id="iniCirrg" >
+						class="form-control" 
+						value="<% out.print(painel.getIniCirurgia()); %>"
+						id="iniCirrg" >
 				</div>
 				<div class="form-group col-md-3">
 					<label for="local">Fim Cirúrgia:</label> <input type="time"
-						class="form-control" id="fimCirrg" >
+						class="form-control" 
+						value="<% out.print(painel.getFimCirurgia()); %>"
+						id="fimCirrg" >
 				</div>
 				<div class="form-group col-md-3">
 					<label for="local">Saída Prevista:</label> <input type="time"
-						class="form-control" id="saiPrev" >
+						class="form-control" 
+						value="<% out.print(painel.getSaidaPrevista()); %>"
+						id="saiPrev" >
 				</div>
 			</div>
 			<button type="button" class="btn btn-secondary">Novo</button>
@@ -96,6 +126,9 @@
 			<button type="button" class="btn btn-danger">Apagar</button>
 		</form>
 	</div>
+
+</body>
+</html>
 
 </body>
 </html>
