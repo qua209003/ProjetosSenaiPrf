@@ -38,7 +38,12 @@ public class ServletPainel extends HttpServlet {
 		boolean sucesso = false;
 		if(cod > 0) {
 			obj.setCod(cod);
-			sucesso = obj.atualizar();
+			if(request.getParameter("apagar")==null) {
+				sucesso = obj.atualizar();
+			}else {
+				sucesso = obj.apagar();
+			}
+			
 		}else {
 			sucesso = obj.inserir();
 		}

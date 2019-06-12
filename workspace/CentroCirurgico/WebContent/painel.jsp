@@ -27,10 +27,20 @@
 			</tr>
 		</thead>
 		<tbody>
+		
+		<script>
+		
+		function prepararEditar(cod){
+			//alert("editar "+cod);
+			window.location.replace('gerenciarPainel.jsp?cod='+cod);
+		}
+		
+		</script>
+		
 			<%
 				Painel painel = new Painel();
 				for (Painel p : painel.getLista()) {
-					out.print("<tr>");
+					out.print("<tr onclick='prepararEditar("+p.getCod()+")'>");
 					//out.print("<td>" + p.getCod()+"</td>");
 					out.print("<td>" + p.getNomeCompleto() + "</td>");
 					out.print("<td class='"+p.getCorStatus()+"'>" + p.getStatus() + "</td>");

@@ -94,6 +94,28 @@ public class Painel {
 	}
 
 	
+	public boolean apagar() {
+
+		Connection conexao = new ConectarJDBC().getConectar();
+		
+		if(conexao != null) {
+			String sql = "delete from painel where cod = ? ";
+			try {
+				PreparedStatement prepararSQL =
+						conexao.prepareStatement(sql);				
+				prepararSQL.setInt(1, cod);				
+				prepararSQL.execute();
+				prepararSQL.close();
+				return true;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return false;
+			}
+			
+		}
+		return false;
+	}
+	
 	// copiamos o código inserir pra reaproveitar o codigo e
 	// fazer o método atualizar
 	public boolean atualizar() {
