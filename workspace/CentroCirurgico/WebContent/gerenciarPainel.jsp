@@ -72,10 +72,26 @@
 		function novo(){
 			window.location.replace('gerenciarPainel.jsp');
 		}
+		
+		function sair(){
+			window.location.replace('index.jsp?sair');
+		}
 	</script>
 
 
 	<%
+	// validação por session
+	// uma session serve com variável glogal do sistema
+	// e que pode ser acessada por outros arquivos
+	String login = (String) session.getAttribute("login");
+	
+	// teste se o login esta realmente preenchido
+	if(login == null){
+		out.print("Não logado");
+		response.sendRedirect("index.jsp");
+	}
+	
+	
 		// meu java rolar
 		Painel painel = new Painel();
 
@@ -145,6 +161,7 @@
 			<button type="button" class="btn btn-secondary" onclick="novo()">Novo</button>
 			<button type="button" class="btn btn-primary" onclick="gravar()">Gravar</button>
 			<button type="button" class="btn btn-danger" onclick="apagar()">Apagar</button>
+			<button type="button" class="btn btn-secondary" onclick="sair()">Sair</button>
 		</form>
 	</div>
 
