@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+	<!-- Comentário igual do HTML -->
+	<h:outputText value="#{exemploMB.mensagem}" />
+
+	<!-- Enviar uma informação da tela para o JAVA
+usando JSF -->
+
+	<h:form>
+		<h:inputText value="#{exemploMB.texto}"></h:inputText>
+		<h:commandButton value="Enviar"
+		action="#{exemploMB.botao}"
+		></h:commandButton>
+	</h:form>
+
+</h:body>
+</html>
