@@ -9,31 +9,39 @@
 <h:body>
 	<div class="container">
 		<h4>Formulário com jsf</h4>
-		
-			<h:form>
 
-				<h:messages id="msg" globalOnly="true" display="text"/>
-				
-				<div class="form-group">
-					<label for="nome">Nome:</label>
-					<h:inputText class="form-control" value="#{clienteMB.cliente.nome}"></h:inputText>
-				</div>
-				<div class="form-group">
-					<label for="email">Email:</label>
-					<h:inputText class="form-control"
-						value="#{clienteMB.cliente.email}"></h:inputText>
-				</div>
-				<div class="form-group">
-					<label for="pwd">Password:</label>
-					<h:inputSecret class="form-control"
-						value="#{clienteMB.cliente.senha}"></h:inputSecret>
-				</div>
-				<h:commandButton class="btn btn-primary"
-					action="#{clienteMB.gravar}">
-				</h:commandButton>
-				<!--comment-->
-			</h:form>
-		
+		<h:form>
+
+			<h:messages id="msg" globalOnly="true" display="text" />
+			<h:inputHidden value="#{clienteMB.cliente.cod}"></h:inputHidden>
+			<div class="form-group">
+				<label for="nome">Nome:</label>
+				<h:inputText class="form-control" value="#{clienteMB.cliente.nome}"></h:inputText>
+			</div>
+			<div class="form-group">
+				<label for="email">Email:</label>
+				<h:inputText class="form-control" value="#{clienteMB.cliente.email}"></h:inputText>
+			</div>
+			<div class="form-group">
+				<label for="pwd">Password:</label>
+				<h:inputSecret class="form-control"
+					value="#{clienteMB.cliente.senha}"></h:inputSecret>
+			</div>
+			<h:commandButton class="btn btn-primary" 
+				action="#{clienteMB.gravar}"
+				value="Gravar">
+			</h:commandButton>
+			<h:commandButton class="btn btn-primary" 
+				action="listaCliente.xhtml"
+				value="Lista">
+			</h:commandButton>
+			<h:commandButton class="btn btn-primary" 
+				action="#{clienteMB.apagar}"
+				value="Apagar">
+			</h:commandButton>
+			<!--comment-->
+		</h:form>
+
 	</div>
 
 </h:body>

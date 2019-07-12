@@ -1,6 +1,7 @@
 package org.senai.exemplojsf.modelo;
 
 public class Cliente {
+	private int cod;
 	private String nome;
 	private String email;
 	private String senha;
@@ -27,6 +28,14 @@ public class Cliente {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public int getCod() {
+		return cod;
+	}
+
+	public void setCod(int cod) {
+		this.cod = cod;
 	}
 
 }

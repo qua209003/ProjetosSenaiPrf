@@ -3,9 +3,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
+	<h:head>
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+	</h:head>
 <h:body>
 	<h:form>
-		<h:dataTable value="#{clienteMB.lsCliente()}" var="cliente">
+		<h:dataTable value="#{clienteMB.lsCliente()}" var="cliente"
+		styleClass="table-striped">
 			<h:column>
 				<f:facet name="header">Nome</f:facet>
 			#{cliente.nome}
@@ -20,7 +25,9 @@
 		</h:column>
 			<h:column>
 				<h:commandButton 
-				action="#{clienteMB.editar(cliente)}">
+				action="#{clienteMB.editar(cliente)}"
+				value="Editar"
+				>
 				</h:commandButton>
 			</h:column>
 		</h:dataTable>

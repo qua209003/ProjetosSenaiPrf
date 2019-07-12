@@ -28,7 +28,7 @@ public class ClienteDAO {
 				
 				while(dadosDoBanco.next()) {
 					Cliente objCliente = new Cliente();
-					
+					objCliente.setCod(dadosDoBanco.getInt("cod"));
 					objCliente.setNome (dadosDoBanco.getString("nome"));
 					objCliente.setEmail(dadosDoBanco.getString("email"));
 					objCliente.setSenha(dadosDoBanco.getString("senha"));
@@ -75,5 +75,52 @@ public class ClienteDAO {
 
 		}
 		return false;
+	}
+
+
+	public boolean atualizar(Cliente objCliente) {
+
+		Connection conexao = new ConectarJDBC().getConectar();
+
+		if (conexao != null) {
+			String sql = "update cliente set "
+					+ " nome = ?, email = ?, senha = ? where "
+					+ " cod = ? ";
+			try {
+				PreparedStatement prepararSQL = conexao.prepareStatement(sql);
+				prepararSQL.setString(1, objCliente.getNome());
+				prepararSQL.setString(2, objCliente.getEmail());
+				prepararSQL.setString(3, objCliente.getSenha());
+				prepararSQL.setInt(4, objCliente.getCod());
+
+				prepararSQL.execute();
+				prepararSQL.close();
+				return true;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return false;
+			}
+
+		}
+		return false;
+	}
+
+
+	public void apagar(Cliente objCliente) {
+		Connection conexao = new ConectarJDBC().getConectar();
+		if (conexao != null) {
+			String sql = "delete from cliente where "
+					+ " cod = ? ";
+			try {
+				PreparedStatement prepararSQL = conexao.prepareStatement(sql);
+				prepararSQL.setInt(1, objCliente.getCod());
+				prepararSQL.execute();
+				prepararSQL.close();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
 	}
 }
